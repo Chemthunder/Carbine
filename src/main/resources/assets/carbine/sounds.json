@@ -1,0 +1,10 @@
+{
+  "item.curse": {
+    "sounds": [
+      "carbine:item/1",
+      "carbine:item/2",
+      "carbine:item/3"
+    ],
+    "subtitle": "carbine.hit"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "description": {
+    "translate": "enchantment.carbine.botany"
+  },
+  "supported_items": [
+    "carbine:forgotten_curses"
+  ],
+  "weight": 2,
+  "max_level": 1,
+  "min_cost": {
+    "base": 2,
+    "per_level_above_first": 0
+  },
+  "max_cost": {
+    "base": 2,
+    "per_level_above_first": 0
+  },
+  "anvil_cost": 4,
+  "slots": [
+    "head"
+  ],
+  "effects": {
+    "carbine:botany": {},
+
+    "minecraft:item_damage": [
+      {
+        "effect": {
+          "type": "minecraft:add",
+          "value": 3
+        }
+      }
+    ]
+  }
+}
+
+
+

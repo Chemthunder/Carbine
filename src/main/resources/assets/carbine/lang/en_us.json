@@ -1,0 +1,27 @@
+{
+  "itemGroup.carbine": "Carbine",
+
+  "item.carbine.forgotten_curses": "Forgotten Curses",
+  "item.carbine.forgotten_curses.desc": "A weapon brought from the garden, as a harbinger for what's to come...",
+
+  "item.carbine.carnation": "Carnation",
+
+  "death.attack.rooted": "%1$s choked on flowers",
+  "death.attack.rooted.player": "%1$s forced %2$s to choke on flowers",
+
+  "death.attack.curse_kill": "Somebody met an unknown fate",
+  "death.attack.curse_kill.player": "Somebody met an unknown fate",
+
+  "carbine.hit": "why the FUCK are you reading this you FREAK",
+
+  "effect.carbine.neurotoxin": "Neurotoxin",
+  "effect.carbine.rooted": "Rooted",
+
+  "enchantment.carbine.botany": "Botany",
+  "enchantment.carbine.botany.desc": "Forgotten Curses will now reap in enemies upon hit, along with a weapon damage increase.",
+
+  "enchantment.carbine.neurotoxin": "Neurotoxin",
+  "enchantment.carbine.neurotoxin.desc": "Forgotten Curses will now afflict enemies with Neurotoxin, hiding almost all Hud elements.",
+
+  "name.change": "Sapling?"
+}

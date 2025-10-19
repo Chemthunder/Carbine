@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "package": "silly.chemthunder.carbine.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AxeItemMixin",
+    "ItemStackMixin",
+    "PlayerEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "client": [
+    "client.InGameHUDMixin",
+    "client.PlayerEntityRendererMixin"
+  ]
+}
