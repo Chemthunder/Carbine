@@ -23,5 +23,8 @@
   "enchantment.carbine.neurotoxin": "Neurotoxin",
   "enchantment.carbine.neurotoxin.desc": "Forgotten Curses will now afflict enemies with Neurotoxin, hiding almost all Hud elements.",
 
-  "name.change": "Sapling?"
+  "name.change": "Sapling?",
+
+  "death.attack.carnation_kill": "%1$s was misguided",
+  "death.attack.carnation_kill.player": "%1$s was misguided"
 }

@@ -7,10 +7,14 @@ import net.acoyt.acornlib.impl.client.particle.SweepParticleEffect;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.UseAction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import silly.chemthunder.carbine.index.CarbineDamageSources;
@@ -46,5 +50,29 @@ public class CarnationItem extends SwordItem implements CustomHitSoundItem, Cust
     @Override
     public DamageSource getKillSource(LivingEntity livingEntity) {
         return CarbineDamageSources.carnation_kill(livingEntity);
+    }
+
+    @Override
+    public UseAction getUseAction(ItemStack stack) {
+        return UseAction.BLOCK;
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack, LivingEntity user) {
+        return Integer.MAX_VALUE;
+    }
+
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        ItemStack itemStack = user.getStackInHand(hand);
+        user.setCurrentHand(hand);
+        return TypedActionResult.consume(itemStack);
+    }
+
+    @Override
+    public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+        if (user instanceof PlayerEntity player) {
+            player.getItemCooldownManager().set(this, 90);
+        }
+        super.onStoppedUsing(stack, world, user, remainingUseTicks);
     }
 }
