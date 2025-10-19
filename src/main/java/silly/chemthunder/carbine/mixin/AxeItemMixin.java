@@ -40,5 +40,16 @@ public abstract class AxeItemMixin extends MiningToolItem {
                 player.giveItemStack(CarbineItems.FORGOTTEN_CURSES.getDefaultStack());
             }
         }
+
+        if (mainStack.isOf(Items.NETHERITE_AXE) && offStack.isOf(Items.IRON_INGOT)) {
+            if (world.getBlockState(pos).isOf(Blocks.BUDDING_AMETHYST)) {
+                mainStack.decrement(1);
+                offStack.decrement(1);
+
+                player.playSound(SoundEvents.ENTITY_IRON_GOLEM_DAMAGE);
+                player.playSound(SoundEvents.BLOCK_CONDUIT_ACTIVATE);
+                player.giveItemStack(CarbineItems.CARNATION.getDefaultStack());
+            }
+        }
     }
 }

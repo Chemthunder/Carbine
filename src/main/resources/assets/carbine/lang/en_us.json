@@ -7,12 +7,12 @@
   "item.carbine.carnation": "Carnation",
 
   "death.attack.rooted": "%1$s choked on flowers",
-  "death.attack.rooted.player": "%1$s forced %2$s to choke on flowers",
+  "death.attack.rooted.player": "%2$s forced %1$s to choke on flowers",
 
   "death.attack.curse_kill": "Somebody met an unknown fate",
   "death.attack.curse_kill.player": "Somebody met an unknown fate",
 
-  "carbine.hit": "why the FUCK are you reading this you FREAK",
+  "carbine.hit": "Forgotten Curses swoons",
 
   "effect.carbine.neurotoxin": "Neurotoxin",
   "effect.carbine.rooted": "Rooted",

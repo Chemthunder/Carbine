@@ -15,7 +15,7 @@ public abstract class ItemStackMixin {
 
     @ModifyReturnValue(method = "getDamage", at = @At("RETURN"))
     private int noDamage(int original) {
-        if (this.isOf(CarbineItems.FORGOTTEN_CURSES)) {
+        if (this.isOf(CarbineItems.FORGOTTEN_CURSES) || this.isOf(CarbineItems.CARNATION)) {
             return 0;
         }
 

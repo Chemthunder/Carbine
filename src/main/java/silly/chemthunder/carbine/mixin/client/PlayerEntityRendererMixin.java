@@ -29,7 +29,7 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
     )
     private void getTexture(AbstractClientPlayerEntity player, CallbackInfoReturnable<Identifier> cir) {
         if (player.hasStatusEffect(CarbineStatusEffects.NEUROTOXIN)) {
-            cir.setReturnValue(Carbine.id("textures/entity/harbinger_goober.png"));
+            cir.setReturnValue(Carbine.id("textures/entity/the_forgotten.png"));
         }
     }
 
@@ -44,7 +44,7 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
         SkinTextures defaultTextures = instance.getSkinTextures();
         if (instance.hasStatusEffect(CarbineStatusEffects.NEUROTOXIN)) {
             return new SkinTextures(
-                    Carbine.id("textures/entity/harbinger_goober.png"),
+                    Carbine.id("textures/entity/the_forgotten.png"),
                     defaultTextures.textureUrl(),
                     defaultTextures.capeTexture(),
                     defaultTextures.elytraTexture(),
