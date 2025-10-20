@@ -12,8 +12,11 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
@@ -92,5 +95,13 @@ public class CarnationItem extends SwordItem implements CustomHitSoundItem, Cust
     @Override
     public void playHitSound(PlayerEntity playerEntity, Entity entity) {
         playerEntity.playSound(SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK);
+    }
+
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+        tooltip.add(this.getDescription().withColor(0x97286a));
+    }
+
+    public MutableText getDescription() {
+        return Text.translatable(this.getTranslationKey() + ".desc");
     }
 }
