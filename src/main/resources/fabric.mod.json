@@ -3,16 +3,14 @@
   "id": "carbine",
   "version": "${version}",
   "name": "Carbine",
-  "description": "Assorted deals for those who have spoken to the Fallacy",
+  "description": "Assorted deals for those who have spoken to the Fallacy. For all there is to be, will be, and has yet to begin.",
   "authors": [
-    "Chemthunder",
-    "KrimsonCinder",
-    "ScarletOnTV"
+    "Chemthunder"
   ],
-  "other": [
-    "I hate fabric its being a bitch"
+  "contributors": [
+    "ScarletOnTV",
+    "KrimsonCinder"
   ],
-  "license": "CC0-1.0",
   "icon": "assets/carbine/icon.png",
   "environment": "*",
   "entrypoints": {
@@ -35,8 +33,5 @@
     "minecraft": "~1.21.1",
     "java": ">=21",
     "fabric-api": "*"
-  },
-  "suggests": {
-    "another-mod": "Bulwark"
   }
 }
