@@ -1,5 +1,6 @@
 package silly.chemthunder.carbine.effect;
 
+import net.acoyt.acornlib.api.effect.UnclearableEffect;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
@@ -8,7 +9,7 @@ import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 
-public class NeurotoxinEffect extends StatusEffect {
+public class NeurotoxinEffect extends StatusEffect implements UnclearableEffect {
     public NeurotoxinEffect(StatusEffectCategory category, int color) {
         super(category, color);
     }

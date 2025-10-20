@@ -4,6 +4,7 @@ import net.acoyt.acornlib.api.item.CustomHitParticleItem;
 import net.acoyt.acornlib.api.item.CustomHitSoundItem;
 import net.acoyt.acornlib.api.item.CustomKillSourceItem;
 import net.acoyt.acornlib.impl.client.particle.SweepParticleEffect;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
@@ -41,23 +42,14 @@ public class CarnationItem extends SwordItem implements CustomHitSoundItem, Cust
         }
     }
 
-
-    @Override
-    public void playHitSound(PlayerEntity playerEntity) {
-        playerEntity.playSound(SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK);
-    }
-
-    @Override
     public DamageSource getKillSource(LivingEntity livingEntity) {
         return CarbineDamageSources.carnation_kill(livingEntity);
     }
 
-    @Override
     public UseAction getUseAction(ItemStack stack) {
-        return UseAction.BLOCK;
+        return UseAction.BRUSH;
     }
 
-    @Override
     public int getMaxUseTime(ItemStack stack, LivingEntity user) {
         return Integer.MAX_VALUE;
     }
@@ -68,11 +60,19 @@ public class CarnationItem extends SwordItem implements CustomHitSoundItem, Cust
         return TypedActionResult.consume(itemStack);
     }
 
-    @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         if (user instanceof PlayerEntity player) {
             player.getItemCooldownManager().set(this, 90);
         }
         super.onStoppedUsing(stack, world, user, remainingUseTicks);
+    }
+
+    public void spawnHitParticles(PlayerEntity playerEntity, Entity entity) {
+        spawnHitParticles(playerEntity);
+    }
+
+    @Override
+    public void playHitSound(PlayerEntity playerEntity, Entity entity) {
+        playerEntity.playSound(SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK);
     }
 }

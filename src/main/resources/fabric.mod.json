@@ -5,11 +5,12 @@
   "name": "Carbine",
   "description": "Assorted deals for those who have spoken to the Fallacy",
   "authors": [
-    "Chemthunder"
-  ],
-  "worshippers": [
+    "Chemthunder",
     "KrimsonCinder",
     "ScarletOnTV"
+  ],
+  "other": [
+    "I hate fabric its being a bitch"
   ],
   "license": "CC0-1.0",
   "icon": "assets/carbine/icon.png",
@@ -20,6 +21,9 @@
     ],
     "fabric-datagen": [
       "silly.chemthunder.carbine.CarbineDataGenerator"
+    ],
+    "client": [
+      "silly.chemthunder.carbine.CarbineClient"
     ]
   },
   "accessWidener" : "carbine.accesswidener",
@@ -33,6 +37,6 @@
     "fabric-api": "*"
   },
   "suggests": {
-    "another-mod": "*"
+    "another-mod": "Bulwark"
   }
 }
