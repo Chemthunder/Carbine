@@ -11,6 +11,7 @@ public interface CarbineDamageSources {
     RegistryKey<DamageType> CURSE_KILL = of("curse_kill");
     RegistryKey<DamageType> ROOTED = of("rooted");
     RegistryKey<DamageType> CARNATION_KILL = of("carnation_kill");
+    RegistryKey<DamageType> INHIBITED = of("inhibited");
 
     static DamageSource curse_kill(LivingEntity entity) {
         return entity.getDamageSources().create(CURSE_KILL); }
@@ -20,6 +21,9 @@ public interface CarbineDamageSources {
 
     static DamageSource carnation_kill(LivingEntity entity) {
         return entity.getDamageSources().create(CARNATION_KILL); }
+
+    static DamageSource inhibited(LivingEntity entity) {
+        return entity.getDamageSources().create(INHIBITED); }
 
     private static RegistryKey<DamageType> of(String name) {
         return RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Carbine.id(name));

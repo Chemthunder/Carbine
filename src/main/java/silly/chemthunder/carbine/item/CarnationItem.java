@@ -7,6 +7,7 @@ import net.acoyt.acornlib.impl.client.particle.SweepParticleEffect;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
@@ -16,9 +17,13 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import silly.chemthunder.carbine.index.CarbineDamageSources;
+import silly.chemthunder.carbine.index.CarbineStatusEffects;
+
+import java.util.List;
 
 public class CarnationItem extends SwordItem implements CustomHitSoundItem, CustomHitParticleItem, CustomKillSourceItem {
     public CarnationItem(ToolMaterial toolMaterial, Settings settings) {
@@ -47,7 +52,7 @@ public class CarnationItem extends SwordItem implements CustomHitSoundItem, Cust
     }
 
     public UseAction getUseAction(ItemStack stack) {
-        return UseAction.BRUSH;
+        return UseAction.BOW;
     }
 
     public int getMaxUseTime(ItemStack stack, LivingEntity user) {
@@ -63,6 +68,19 @@ public class CarnationItem extends SwordItem implements CustomHitSoundItem, Cust
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         if (user instanceof PlayerEntity player) {
             player.getItemCooldownManager().set(this, 90);
+            Box box = new Box(user.getBlockPos()).expand(8, 5, 8);
+            List<LivingEntity> entities = world.getEntitiesByClass(
+                    LivingEntity.class, box,
+                    entity -> true
+            );
+
+            for (LivingEntity entity : entities) {
+                if (entity != user) {
+                    entity.addStatusEffect(new StatusEffectInstance(CarbineStatusEffects.IMPEDED, 200));
+                    entity.damage(CarbineDamageSources.inhibited(user), 6f);
+                }
+            }
+            player.playSound(SoundEvents.ENTITY_WITHER_HURT, 0.25f, 1);
         }
         super.onStoppedUsing(stack, world, user, remainingUseTicks);
     }

@@ -9,10 +9,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
-import net.minecraft.item.EnderPearlItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.tooltip.TooltipType;
@@ -118,7 +116,6 @@ public class ForgottenCursesItem extends AxeItem implements CustomKillSourceItem
                         ((PlayerEntity) user).getItemCooldownManager().set(this, 60);
                     }
                 }
-
                 ((PlayerEntity) user).getItemCooldownManager().set(this, 60);
             }
         }

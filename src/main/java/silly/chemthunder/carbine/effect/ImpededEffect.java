@@ -8,12 +8,10 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
 
 public class ImpededEffect extends StatusEffect implements UnclearableEffect {
     public ImpededEffect(StatusEffectCategory category, int color) {
@@ -34,7 +32,7 @@ public class ImpededEffect extends StatusEffect implements UnclearableEffect {
     }
 
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
-        int i = 15;
+        int i = 1;
         return duration % i == 0;
     }
 }

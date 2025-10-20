@@ -5,7 +5,8 @@
   "mixins": [
     "AxeItemMixin",
     "ItemStackMixin",
-    "PlayerEntityMixin"
+    "PlayerEntityMixin",
+    "ServerPlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

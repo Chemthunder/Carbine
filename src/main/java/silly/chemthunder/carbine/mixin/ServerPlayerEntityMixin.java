@@ -1,7 +1,6 @@
 package silly.chemthunder.carbine.mixin;
 
 import com.mojang.authlib.GameProfile;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;

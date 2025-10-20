@@ -20,7 +20,6 @@ public interface CarbineItemGroups {
             .displayName(Text.translatable("itemGroup.carbine").formatted(Formatting.OBFUSCATED).styled(style -> style.withColor(0x731839)))
             .build();
 
-
     static void init() {
         Registry.register(Registries.ITEM_GROUP, HERALD_GROUP_KEY, ITEM_GROUP);
         ItemGroupEvents.modifyEntriesEvent(HERALD_GROUP_KEY).register(CarbineItemGroups::addEntries);

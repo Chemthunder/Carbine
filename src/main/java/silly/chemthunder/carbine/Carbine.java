@@ -2,7 +2,6 @@ package silly.chemthunder.carbine;
 
 import net.acoyt.acornlib.api.ALib;
 import net.fabricmc.api.ModInitializer;
-
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
