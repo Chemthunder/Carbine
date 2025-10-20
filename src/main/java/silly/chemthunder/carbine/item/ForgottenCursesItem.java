@@ -68,7 +68,9 @@ public class ForgottenCursesItem extends AxeItem implements CustomKillSourceItem
         BlockPos downPos = victimPos.down();
 
         if (world.getBlockState(downPos).isIn(BlockTags.DIRT)) {
-            world.setBlockState(victimPos, Blocks.CHERRY_SAPLING.getDefaultState());
+            if (world.getBlockState(victimPos).isOf(Blocks.AIR)) {
+                world.setBlockState(victimPos, Blocks.CHERRY_SAPLING.getDefaultState());
+            }
         }
 
         if (world instanceof ServerWorld serverWorld) {
@@ -82,59 +84,62 @@ public class ForgottenCursesItem extends AxeItem implements CustomKillSourceItem
 
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-        if (user instanceof PlayerEntity) {
-            if (!user.isOnGround()) {
-                user.setVelocity(user.getRotationVec(0).multiply(2.5));
-                user.velocityModified = true;
-                ((PlayerEntity) user).getItemCooldownManager().set(this, 20);
+        if (world instanceof ServerWorld serverWorld) {
+            if (user instanceof PlayerEntity) {
+                if (!user.isOnGround()) {
+                    user.setVelocity(user.getRotationVec(0).multiply(2.5));
+                    user.velocityModified = true;
+                    ((PlayerEntity) user).getItemCooldownManager().set(this, 20);
 
-                Box box = new Box(user.getBlockPos()).expand(4);
-                List<LivingEntity> entities = world.getEntitiesByClass(
-                        LivingEntity.class, box,
-                        entity -> true
-                );
+                    Box box = new Box(user.getBlockPos()).expand(4);
+                    List<LivingEntity> entities = world.getEntitiesByClass(
+                            LivingEntity.class, box,
+                            entity -> true
+                    );
 
-                for (LivingEntity entity : entities) {
-                    if (entity != user) {
-                        entity.damage(CarbineDamageSources.rooted(entity), 1.5f);
-                    }
-                }
-            } else {
-                Box box = new Box(user.getBlockPos()).expand(8);
-                List<LivingEntity> entities = world.getEntitiesByClass(
-                        LivingEntity.class, box,
-                        entity -> true
-                );
-
-                for (LivingEntity entity : entities) {
-                    if (entity != user) {
-                        if (EnchantmentHelper.hasAnyEnchantmentsWith(stack, CarbineEnchantments.BOTANY)) {
-                        entity.damage(CarbineDamageSources.rooted(user), 5f);
-                        } else {
-                            entity.addStatusEffect(new StatusEffectInstance(CarbineStatusEffects.ROOTED, 200));
+                    for (LivingEntity entity : entities) {
+                        if (entity != user) {
+                            entity.damage(CarbineDamageSources.rooted(entity), 1.5f);
                         }
-                        ((PlayerEntity) user).getItemCooldownManager().set(this, 60);
                     }
+                } else {
+                    Box box = new Box(user.getBlockPos()).expand(8);
+                    List<LivingEntity> entities = world.getEntitiesByClass(
+                            LivingEntity.class, box,
+                            entity -> true
+                    );
+
+                    for (LivingEntity entity : entities) {
+                        if (entity != user) {
+                            if (EnchantmentHelper.hasAnyEnchantmentsWith(stack, CarbineEnchantments.BOTANY)) {
+                                entity.damage(CarbineDamageSources.rooted(user), 5f);
+                            } else {
+                                entity.addStatusEffect(new StatusEffectInstance(CarbineStatusEffects.ROOTED, 200));
+                            }
+                            ((PlayerEntity) user).getItemCooldownManager().set(this, 60);
+                        }
+                    }
+                    ((PlayerEntity) user).getItemCooldownManager().set(this, 60);
                 }
-                ((PlayerEntity) user).getItemCooldownManager().set(this, 60);
+                serverWorld.spawnParticles(Carbine.GET_CURSED_BITCH, user.getX(), user.getY(), user.getZ(), 15, 0.5, 0.5, 0.5, 0.05);
             }
+            user.playSound(SoundEvents.BLOCK_CHERRY_LEAVES_BREAK, 0.5f, 0);
+            super.onStoppedUsing(stack, world, user, remainingUseTicks);
         }
-        user.playSound(SoundEvents.BLOCK_CHERRY_LEAVES_BREAK, 0.5f, 0);
-        super.onStoppedUsing(stack, world, user, remainingUseTicks);
     }
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-            if (EnchantmentHelper.hasAnyEnchantmentsWith(stack, CarbineEnchantments.BOTANY)) {
-                target.setVelocity(attacker.getRotationVec(0).multiply(-0.4));
-            }
-            if (EnchantmentHelper.hasAnyEnchantmentsWith(stack, CarbineEnchantments.NEUROTOXIN)) {
-                target.addStatusEffect(new StatusEffectInstance(CarbineStatusEffects.NEUROTOXIN, 600));
-            }
+        if (EnchantmentHelper.hasAnyEnchantmentsWith(stack, CarbineEnchantments.BOTANY)) {
+            target.setVelocity(attacker.getRotationVec(0).multiply(-0.4));
+        }
+        if (EnchantmentHelper.hasAnyEnchantmentsWith(stack, CarbineEnchantments.NEUROTOXIN)) {
+            target.addStatusEffect(new StatusEffectInstance(CarbineStatusEffects.NEUROTOXIN, 600));
+        }
 
-            if (!EnchantmentHelper.hasAnyEnchantmentsWith(stack, CarbineEnchantments.BOTANY) || !EnchantmentHelper.hasAnyEnchantmentsWith(stack, CarbineEnchantments.NEUROTOXIN)) {
+        if (!EnchantmentHelper.hasAnyEnchantmentsWith(stack, CarbineEnchantments.BOTANY) || !EnchantmentHelper.hasAnyEnchantmentsWith(stack, CarbineEnchantments.NEUROTOXIN)) {
             target.addStatusEffect(new StatusEffectInstance(CarbineStatusEffects.ROOTED, 200));
-            }
+        }
         return super.postHit(stack, target, attacker);
     }
 
