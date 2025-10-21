@@ -22,11 +22,11 @@
   "effects": {
     "carbine:botany": {},
 
-    "minecraft:item_damage": [
+    "minecraft:damage": [
       {
         "effect": {
           "type": "minecraft:add",
-          "value": 3
+          "value": 7
         }
       }
     ]

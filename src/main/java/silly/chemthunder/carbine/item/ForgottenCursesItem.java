@@ -134,7 +134,7 @@ public class ForgottenCursesItem extends AxeItem implements CustomKillSourceItem
             target.setVelocity(attacker.getRotationVec(0).multiply(-0.4));
         }
         if (EnchantmentHelper.hasAnyEnchantmentsWith(stack, CarbineEnchantments.NEUROTOXIN)) {
-            target.addStatusEffect(new StatusEffectInstance(CarbineStatusEffects.NEUROTOXIN, 600));
+            target.addStatusEffect(new StatusEffectInstance(CarbineStatusEffects.NEUROTOXIN, 200));
         }
 
         if (!EnchantmentHelper.hasAnyEnchantmentsWith(stack, CarbineEnchantments.BOTANY) || !EnchantmentHelper.hasAnyEnchantmentsWith(stack, CarbineEnchantments.NEUROTOXIN)) {
