@@ -24,13 +24,13 @@ public interface CarbineItems {
     Item FORGOTTEN_CURSES = create("forgotten_curses", new ForgottenCursesItem(CarbineToolMaterials.FORG, new AcornItemSettings()
             .maxCount(1)
             .fireproof()
-            .attributeModifiers(SwordItem.createAttributeModifiers(CarbineToolMaterials.FORG, 8, -2.4f)))
+            .attributeModifiers(SwordItem.createAttributeModifiers(CarbineToolMaterials.FORG, 9, -2.4f)))
     );
 
     Item CARNATION = create("carnation", new CarnationItem(CarbineToolMaterials.CARN, new AcornItemSettings()
             .maxCount(1)
             .fireproof()
-            .attributeModifiers(SwordItem.createAttributeModifiers(CarbineToolMaterials.CARN, 9, -2.7f)))
+            .attributeModifiers(SwordItem.createAttributeModifiers(CarbineToolMaterials.CARN, 10, -2.7f)))
     );
 
     static void init() {
